@@ -10,7 +10,9 @@ function toggleDarkMode() {
 function calculateIntensity() {
     // Clear previous result content
     const resultElement = document.getElementById("result");
-    resultElement.innerHTML = ""; // Clear all previous content in the result overlay
+    resultElement.innerHTML = ""; // Clear previous content in the result overlay
+
+    console.log("Calculating caffeine intensity...");
 
     // Get values from the form
     const strength = document.getElementById("strength").value;
@@ -64,6 +66,7 @@ function calculateIntensity() {
     mainMessageElement.innerHTML = `<strong>${personality}</strong> - Caffeine Amount for this cup: ${Math.round(caffeineAmount)} mg<br>${intensityMessage}`;
     mainMessageElement.classList.add("main-message");
     resultElement.appendChild(mainMessageElement);
+    console.log("Main message added.");
 
     // Update the daily caffeine total
     dailyCaffeineTotal += caffeineAmount;
@@ -75,6 +78,7 @@ function calculateIntensity() {
     meterBar.style.width = caffeinePercentage + "%";
     meterBar.style.backgroundColor = caffeinePercentage <= 50 ? "#6a994e" : 
                                      caffeinePercentage <= 80 ? "#f4a261" : "#e63946";
+    console.log("Caffeine meter updated.");
 
     // Display suggested wait time based on caffeine amount and tolerance
     let waitTimeMessage;
@@ -86,11 +90,11 @@ function calculateIntensity() {
         waitTimeMessage = caffeineAmount > 300 ? "Suggested wait time before next coffee: 1-2 hours" : "Suggested wait time before next coffee: 30 mins - 1 hour";
     }
 
-    // Display the wait time message
     const waitTimeElement = document.createElement("p");
     waitTimeElement.innerText = waitTimeMessage;
     waitTimeElement.classList.add("wait-time");
     resultElement.appendChild(waitTimeElement);
+    console.log("Wait time message added.");
 
     // Suggest an alternative drink if caffeine is too high
     let alternativeDrink;
@@ -104,11 +108,11 @@ function calculateIntensity() {
         alternativeDrink = "You're good with this coffee, but feel free to mix it up with a decaf next time!";
     }
 
-    // Display the alternative drink suggestion
     const drinkSuggestionElement = document.createElement("p");
     drinkSuggestionElement.innerText = alternativeDrink;
     drinkSuggestionElement.classList.add("drink-suggestion");
     resultElement.appendChild(drinkSuggestionElement);
+    console.log("Drink suggestion added.");
 
     // Display a random coffee fact
     const randomFact = coffeeFacts[Math.floor(Math.random() * coffeeFacts.length)];
@@ -116,10 +120,12 @@ function calculateIntensity() {
     factElement.innerText = randomFact;
     factElement.classList.add("coffee-fact");
     resultElement.appendChild(factElement);
+    console.log("Random coffee fact added.");
 
     // Show overlay and hide main container
     document.getElementById("mainContainer").style.display = "none";
     document.getElementById("resultOverlay").style.display = "flex";
+    console.log("Result overlay displayed.");
 }
 
 // Reset daily caffeine total function
