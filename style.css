@@ -111,24 +111,27 @@ body.dark-mode #result {
     color: #f4a261 !important;
 }
 
-/* Caffeine Meter Styles */
+/* Caffeine Meter Container */
 #caffeine-meter {
-    margin-top: 20px;
-    width: 100%;
-    height: 20px;
+    margin: 15px auto;            /* Center within the overlay */
+    width: 80%;                   /* Shrink to a manageable width */
+    max-width: 300px;             /* Limit its max width */
+    height: 15px;                 /* Adjust the height */
     background-color: #e0e0e0;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
 }
 
+/* Meter Bar */
 #meter-bar {
     height: 100%;
-    width: 0; /* Initial width of the bar */
-    background-color: #6a994e;
+    width: 0;                     /* Start with no fill */
+    background-color: #6a994e;    /* Green for low caffeine */
     border-radius: 10px;
     transition: width 0.5s ease, background-color 0.5s ease;
 }
+
 
 /* Message Colors */
 .wait-time {
