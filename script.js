@@ -70,15 +70,22 @@ function calculateIntensity() {
 
     // Update the daily caffeine total
     dailyCaffeineTotal += caffeineAmount;
-    document.getElementById("dailyTotal").innerText = `Daily Caffeine Total: ${Math.round(dailyCaffeineTotal)} mg`;
+    const dailyTotalElement = document.getElementById("dailyTotal");
+    if (dailyTotalElement) {
+        dailyTotalElement.innerText = `Daily Caffeine Total: ${Math.round(dailyCaffeineTotal)} mg`;
+    }
 
     // Update the caffeine meter bar
     const meterBar = document.getElementById("meter-bar");
-    const caffeinePercentage = Math.min((caffeineAmount / 400) * 100, 100);
-    meterBar.style.width = caffeinePercentage + "%";
-    meterBar.style.backgroundColor = caffeinePercentage <= 50 ? "#6a994e" : 
-                                     caffeinePercentage <= 80 ? "#f4a261" : "#e63946";
-    console.log("Caffeine meter updated.");
+    if (meterBar) {
+        const caffeinePercentage = Math.min((caffeineAmount / 400) * 100, 100);
+        meterBar.style.width = caffeinePercentage + "%";
+        meterBar.style.backgroundColor = caffeinePercentage <= 50 ? "#6a994e" : 
+                                         caffeinePercentage <= 80 ? "#f4a261" : "#e63946";
+        console.log("Caffeine meter updated.");
+    } else {
+        console.warn("Meter bar not found.");
+    }
 
     // Display suggested wait time based on caffeine amount and tolerance
     let waitTimeMessage;
@@ -123,19 +130,34 @@ function calculateIntensity() {
     console.log("Random coffee fact added.");
 
     // Show overlay and hide main container
-    document.getElementById("mainContainer").style.display = "none";
-    document.getElementById("resultOverlay").style.display = "flex";
-    console.log("Result overlay displayed.");
+    const mainContainer = document.getElementById("mainContainer");
+    const resultOverlay = document.getElementById("resultOverlay");
+
+    if (mainContainer && resultOverlay) {
+        mainContainer.style.display = "none";
+        resultOverlay.style.display = "flex";
+        console.log("Result overlay displayed.");
+    } else {
+        console.warn("Main container or result overlay not found.");
+    }
 }
 
 // Reset daily caffeine total function
 function resetDailyTotal() {
     dailyCaffeineTotal = 0;
-    document.getElementById("dailyTotal").innerText = `Daily Caffeine Total: ${dailyCaffeineTotal} mg`;
+    const dailyTotalElement = document.getElementById("dailyTotal");
+    if (dailyTotalElement) {
+        dailyTotalElement.innerText = `Daily Caffeine Total: ${dailyCaffeineTotal} mg`;
+    }
 }
 
 // Go back to the main form
 function goBack() {
-    document.getElementById("mainContainer").style.display = "block";
-    document.getElementById("resultOverlay").style.display = "none";
+    const mainContainer = document.getElementById("mainContainer");
+    const resultOverlay = document.getElementById("resultOverlay");
+
+    if (mainContainer && resultOverlay) {
+        mainContainer.style.display = "block";
+        resultOverlay.style.display = "none";
+    }
 }
