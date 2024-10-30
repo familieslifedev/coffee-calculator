@@ -5,7 +5,7 @@ Welcome to the **Coffee Intensity Calculator**! This simple web app calculates t
 ---
 
 ## 🚀 Features
-- **Customizable Inputs**: Choose coffee strength, size, and your caffeine tolerance.
+- **Customizable Inputs**: Choose coffee strength, size, your caffeine tolerance and your age and weight so the multiplication factor is correct.
 - **Personalized Warnings**: Get a custom message based on your caffeine tolerance, so you know if it's safe to have another cup or if you're about to blast off.
 - **Lightweight and Simple**: Built with basic HTML, CSS, and JavaScript—no dependencies; drop it in your browser and enjoy.
 
@@ -37,7 +37,8 @@ Welcome to the **Coffee Intensity Calculator**! This simple web app calculates t
 CoffeeIntensityCalculator/
 ├── index.html       # Main HTML file
 ├── style.css        # CSS styling
-└── script.js        # JavaScript logic
+├── script.js        # JS logic
+└── coffeeFacts.js   # Well... coffee facts 😅
 ```
 
 ---
@@ -51,7 +52,7 @@ CoffeeIntensityCalculator/
 
 ## 🤔 Why This Project?
 
-This project was created for fun and to give coffee drinkers a quick, laughable way to gauge their coffee limits. You can easily expand it with more features, like tracking daily caffeine intake or adding other caffeine sources (like tea or energy drinks)!
+This project was created for fun and to give coffee drinkers a quick, laughable way to gauge their coffee limits. You can easily expand it with more features, like adding other caffeine sources (like tea or energy drinks)!
 
 ---
 
@@ -67,4 +68,4 @@ Want to add new features or improve the design? PRs are welcome! Just fork the r
 
 ---
 
-Enjoy your coffee responsibly ☕
+Enjoy your coffee responsibly ☕❤️
