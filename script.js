@@ -1,3 +1,16 @@
+const coffeeFacts = [
+    "Did you know? Coffee was discovered by a goat herder who noticed his goats acting hyper after eating coffee cherries!",
+    "Coffee beans are actually seeds from the coffee cherry, making coffee technically a fruit!",
+    "Drinking coffee may help reduce the risk of diseases like Alzheimer's and Parkinson's.",
+    "Espresso has less caffeine per ounce than drip coffee, but it's more concentrated!",
+    "Decaf coffee still contains a small amount of caffeine—about 2-5 mg per cup.",
+    "Cold brew coffee is less acidic and smoother because it's brewed slowly with cold water.",
+    "The largest cup of coffee ever made was over 3,700 gallons!",
+    "Coffee grounds can be used as a natural fertilizer for plants.",
+    "The world consumes about 2.25 billion cups of coffee each day.",
+    "Dark roast coffee actually has slightly less caffeine than lighter roasts."
+];
+
 function calculateIntensity() {
     // Get values from the form
     const strength = document.getElementById("strength").value;
@@ -5,8 +18,8 @@ function calculateIntensity() {
     const tolerance = document.getElementById("tolerance").value;
 
     // Set base caffeine values for each strength and size
-    const strengthLevels = { light: 50, medium: 100, strong: 150 };
-    const sizeMultipliers = { small: 1, medium: 1.5, large: 2 };
+    const strengthLevels = {light: 50, medium: 100, strong: 150};
+    const sizeMultipliers = {small: 1, medium: 1.5, large: 2};
 
     // Calculate total caffeine amount
     const caffeineAmount = strengthLevels[strength] * sizeMultipliers[size];
@@ -47,3 +60,62 @@ function calculateIntensity() {
     // Display the result
     document.getElementById("result").innerText = message;
 }
+
+// Update the caffeine meter bar
+const meterBar = document.getElementById("meter-bar");
+const caffeinePercentage = Math.min((caffeineAmount / 400) * 100, 100); // Cap at 100%
+
+meterBar.style.width = caffeinePercentage + "%";
+
+// Change the bar color based on intensity
+if (caffeinePercentage <= 50) {
+    meterBar.style.backgroundColor = "#6a994e"; // Green for low caffeine
+} else if (caffeinePercentage <= 80) {
+    meterBar.style.backgroundColor = "#f4a261"; // Orange for medium caffeine
+} else {
+    meterBar.style.backgroundColor = "#e63946"; // Red for high caffeine
+}
+
+// Calculate and display suggested wait time based on tolerance and caffeine amount
+let waitTimeMessage;
+if (tolerance === "low") {
+    waitTimeMessage = caffeineAmount > 150 ? "Suggested wait time: 4-6 hours" : "Suggested wait time: 2-3 hours";
+} else if (tolerance === "moderate") {
+    waitTimeMessage = caffeineAmount > 200 ? "Suggested wait time: 3-4 hours" : "Suggested wait time: 1-2 hours";
+} else if (tolerance === "high") {
+    waitTimeMessage = caffeineAmount > 300 ? "Suggested wait time: 1-2 hours" : "Suggested wait time: 30 mins - 1 hour";
+}
+
+// Display the wait time message
+const waitTimeElement = document.createElement("p");
+waitTimeElement.innerText = waitTimeMessage;
+waitTimeElement.style.marginTop = "10px";
+waitTimeElement.style.color = "#4a4e69";
+document.getElementById("result").appendChild(waitTimeElement);
+
+// Suggest an alternative drink if caffeine is too high
+let alternativeDrink;
+if (tolerance === "low" && caffeineAmount > 100) {
+    alternativeDrink = "How about a relaxing herbal tea or hot chocolate instead? 🍵";
+} else if (tolerance === "moderate" && caffeineAmount > 200) {
+    alternativeDrink = "Try a green tea or matcha latte for a lighter boost. 🍵";
+} else if (tolerance === "high" && caffeineAmount > 300) {
+    alternativeDrink = "If you're really craving it, maybe try an espresso shot or black coffee for a quicker hit. ☕";
+} else {
+    alternativeDrink = "You're good with this coffee, but feel free to mix it up with a decaf next time!";
+}
+
+// Display the alternative drink suggestion
+const drinkSuggestionElement = document.createElement("p");
+drinkSuggestionElement.innerText = alternativeDrink;
+drinkSuggestionElement.style.marginTop = "10px";
+drinkSuggestionElement.style.color = "#6a994e";
+document.getElementById("result").appendChild(drinkSuggestionElement);
+
+// Display a random coffee fact
+const randomFact = coffeeFacts[Math.floor(Math.random() * coffeeFacts.length)];
+const factElement = document.createElement("p");
+factElement.innerText = randomFact;
+factElement.style.marginTop = "15px";
+factElement.style.color = "#4a4e69";
+document.getElementById("result").appendChild(factElement);
