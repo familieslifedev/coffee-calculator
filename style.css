@@ -1,11 +1,11 @@
-/* Reset */
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Light Mode */
+/* General Styles for Light Mode (Default) */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f4f8;
@@ -16,7 +16,8 @@ body {
     color: #333;
 }
 
-.container {
+/* Main Container - Light Mode (Default) */
+#mainContainer {
     background-color: #ffffff;
     padding: 30px;
     width: 350px;
@@ -25,6 +26,7 @@ body {
     text-align: center;
 }
 
+/* Heading and Labels */
 h1 {
     font-size: 1.8em;
     margin-bottom: 20px;
@@ -43,6 +45,7 @@ label {
     color: #4a4e69;
 }
 
+/* Input Fields */
 .input-field {
     width: 100%;
     padding: 10px;
@@ -51,10 +54,10 @@ label {
     font-size: 1em;
     background-color: #ffffff;
     color: #333;
-    appearance: none;
 }
 
-.calculate-btn, .dark-mode-btn {
+/* Buttons - Light Mode (Default) */
+.calculate-btn, .reset-btn, .dark-mode-btn, .back-btn {
     background-color: #6a994e;
     color: #fff;
     border: none;
@@ -68,153 +71,147 @@ label {
     width: 100%;
 }
 
-.calculate-btn:hover, .dark-mode-btn:hover {
+.calculate-btn:hover, .reset-btn:hover, .dark-mode-btn:hover, .back-btn:hover {
     background-color: #40916c;
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #6a994e;
-    font-weight: bold;
-    line-height: 1.5;
-}
-
-/* Dark Mode */
-body.dark-mode {
-    background-color: #333 !important;
-    color: #f0f4f8 !important;
-}
-
-body.dark-mode .container {
-    background-color: #4a4e69 !important;
-}
-
-body.dark-mode h1, body.dark-mode label {
-    color: #f0f4f8 !important;
-}
-
-body.dark-mode .input-field {
-    background-color: #333 !important;
-    color: #f0f4f8 !important;
-}
-
-body.dark-mode .calculate-btn, body.dark-mode .dark-mode-btn {
-    background-color: #f4a261 !important;
-}
-
-body.dark-mode .calculate-btn:hover, body.dark-mode .dark-mode-btn:hover {
-    background-color: #e76f51 !important;
-}
-
-body.dark-mode #result {
-    color: #f4a261 !important;
-}
-
-/* Caffeine Meter Container */
-#caffeine-meter {
-    margin: 15px auto;            /* Center within the overlay */
-    width: 80%;                   /* Shrink to a manageable width */
-    max-width: 300px;             /* Limit its max width */
-    height: 15px;                 /* Adjust the height */
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Meter Bar */
-#meter-bar {
-    height: 100%;
-    width: 0;                     /* Start with no fill */
-    background-color: #6a994e;    /* Green for low caffeine */
-    border-radius: 10px;
-    transition: width 0.5s ease, background-color 0.5s ease;
-}
-
-/* Message Colors */
-.wait-time {
-    color: #0077b6; /* Calming blue for wait time */
-    margin-top: 10px;
-}
-
-.drink-suggestion {
-    color: #6a994e; /* Green for drink suggestion */
-    margin-top: 10px;
-}
-
-.coffee-fact {
-    color: #4a4e69; /* Coffee brown for random fact */
-    margin-top: 15px;
-}
-
-.reset-btn {
-    background-color: #6a994e;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 15px;
-    width: 100%;
-
-    .reset-btn:hover, .dark-mode-btn:hover {
-    background-color: #40916c;
-}
-
-#result {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #6a994e;
-    font-weight: bold;
-    line-height: 1.5;
-}
-
+/* Daily Total Display */
 #dailyTotal {
     margin-top: 10px;
     font-size: 1em;
     color: #333;
 }
 
-/* Overlay */
+/* Result Styles */
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #6a994e;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #333;
+    color: #f0f4f8;
+}
+
+body.dark-mode #mainContainer {
+    background-color: #4a4e69;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode h1, body.dark-mode label {
+    color: #f0f4f8;
+}
+
+body.dark-mode .input-field {
+    background-color: #333;
+    color: #f0f4f8;
+    border: 1px solid #f0f4f8; /* Make the borders more visible in dark mode */
+}
+
+/* Dark Mode Button Adjustments */
+body.dark-mode .calculate-btn, 
+body.dark-mode .reset-btn, 
+body.dark-mode .dark-mode-btn, 
+body.dark-mode .back-btn {
+    background-color: #f4a261;
+    color: #fff;
+}
+
+body.dark-mode .calculate-btn:hover, 
+body.dark-mode .reset-btn:hover, 
+body.dark-mode .dark-mode-btn:hover, 
+body.dark-mode .back-btn:hover {
+    background-color: #e76f51;
+}
+
+body.dark-mode #result {
+    color: #f4a261;
+}
+
+/* Caffeine Meter */
+#caffeine-meter {
+    margin: 15px auto;
+    width: 80%;
+    max-width: 300px;
+    height: 15px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#meter-bar {
+    height: 100%;
+    width: 0;
+    background-color: #6a994e;
+    border-radius: 10px;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+/* Overlay Styles */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    background: rgba(240, 244, 248, 0.9);  /* Light background with transparency */
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10;
 }
 
+body.dark-mode .overlay {
+    background: rgba(51, 51, 51, 0.9);  /* Dark background with transparency */
+    color: #f0f4f8;
+}
+
+/* Result Content Container */
 #resultContent {
-    background-color: #333;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     max-width: 400px;
     text-align: center;
 }
 
-.back-btn {
-    background-color: #6a994e;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 15px;
-    width: 100%;
+body.dark-mode #resultContent {
+    background-color: #4a4e69;
+}
 
-    .back-btn:hover, .dark-mode-btn:hover {
-    background-color: #40916c;
+/* Message Colors */
+.wait-time, .drink-suggestion, .coffee-fact {
+    margin-top: 10px;
+}
+
+.wait-time {
+    color: #0077b6; /* Calming blue for wait time */
+}
+
+.drink-suggestion {
+    color: #6a994e; /* Green for drink suggestion */
+}
+
+.coffee-fact {
+    color: #4a4e69; /* Coffee brown for random fact */
+}
+
+body.dark-mode .coffee-fact {
+    color: #f0f4f8; /* Make coffee facts visible in dark mode */
+}
+
+/* Daily Total Styling */
+#dailyTotal {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333; /* Default color for light mode */
+}
+
+body.dark-mode #dailyTotal {
+    color: #f4a261; /* Change to a visible color in dark mode */
 }
