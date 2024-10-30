@@ -105,12 +105,40 @@ body.dark-mode .input-field {
     color: #f0f4f8;
 }
 
-body.dark-mode .calculate-btn, body.dark-mode .reset-btn, body.dark-mode .dark-mode-btn, body.dark-mode .back-btn {
+body.dark-mode .calculate-btn, 
+body.dark-mode .reset-btn, 
+body.dark-mode .dark-mode-btn, 
+body.dark-mode .back-btn {
     background-color: #f4a261;
 }
 
-body.dark-mode .calculate-btn:hover, body.dark-mode .reset-btn:hover, body.dark-mode .dark-mode-btn:hover, body.dark-mode .back-btn:hover {
+body.dark-mode .calculate-btn:hover, 
+body.dark-mode .reset-btn:hover, 
+body.dark-mode .dark-mode-btn:hover, 
+body.dark-mode .back-btn:hover {
     background-color: #e76f51;
+}
+
+/* Overlay Dark Mode */
+.dark-mode-overlay #resultContent {
+    background-color: #4a4e69;
+    color: #f0f4f8;
+}
+
+.dark-mode-overlay .back-btn {
+    background-color: #f4a261;
+}
+
+.dark-mode-overlay .back-btn:hover {
+    background-color: #e76f51;
+}
+
+.dark-mode-overlay #caffeine-meter {
+    background-color: #666;
+}
+
+.dark-mode-overlay #meter-bar {
+    background-color: #f4a261;
 }
 
 /* Caffeine Meter */
