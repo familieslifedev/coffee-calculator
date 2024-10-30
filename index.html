@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Intensity Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Coffee Intensity Calculator ☕</h1>
+    
+    <form id="coffeeForm">
+        <label for="strength">Select Coffee Strength:</label>
+        <select id="strength">
+            <option value="light">Light</option>
+            <option value="medium">Medium</option>
+            <option value="strong">Strong</option>
+        </select><br><br>
+
+        <label for="size">Select Coffee Size:</label>
+        <select id="size">
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+        </select><br><br>
+
+        <label for="tolerance">Select Your Caffeine Tolerance:</label>
+        <select id="tolerance">
+            <option value="low">Low</option>
+            <option value="moderate">Moderate</option>
+            <option value="high">High</option>
+        </select><br><br>
+
+        <button type="button" onclick="calculateIntensity()">Calculate Intensity</button>
+    </form>
+    
+    <h2 id="result"></h2>
+
+    <script src="script.js"></script>
+</body>
+</html>
