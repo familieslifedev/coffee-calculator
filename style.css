@@ -167,13 +167,31 @@ body.dark-mode .back-btn:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    background: rgba(240, 244, 248, 0.9);  /* Default light background with some transparency */
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10;
 }
+
+body.dark-mode .overlay {
+    background: rgba(51, 51, 51, 0.9);  /* Dark mode background with some transparency */
+    color: #f0f4f8;
+}
+
+#resultContent {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    text-align: center;
+}
+
+body.dark-mode #resultContent {
+    background-color: #4a4e69;
+}
+
 
 #resultContent {
     background-color: #333;
