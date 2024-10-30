@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
+<div class="container" id="mainContainer">
     <h1>Coffee Intensity Calculator ☕</h1>
 
     <!-- Dark Mode Toggle Button -->
-        <button type="button" onclick="toggleDarkMode()" class="dark-mode-btn">Toggle Dark Mode 🌑</button>
+    <button type="button" onclick="toggleDarkMode()" class="dark-mode-btn">Toggle Dark Mode 🌑</button>
 
     <form id="coffeeForm">
+        <!-- Input fields for form -->
         <div class="form-group">
             <label for="strength">Select Coffee Strength</label>
             <select id="strength" class="input-field">
@@ -42,27 +43,35 @@
         </div>
 
         <div class="form-group">
-                <label for="age">Your Age</label>
-                <input type="number" id="age" class="input-field" placeholder="e.g., 25" min="1">
-            </div>
+            <label for="age">Your Age</label>
+            <input type="number" id="age" class="input-field" placeholder="e.g., 25" min="1">
+        </div>
 
-            <div class="form-group">
-                <label for="weight">Your Weight (kg)</label>
-                <input type="number" id="weight" class="input-field" placeholder="e.g., 70" min="1">
-            </div>
+        <div class="form-group">
+            <label for="weight">Your Weight (kg)</label>
+            <input type="number" id="weight" class="input-field" placeholder="e.g., 70" min="1">
+        </div>
 
+        <!-- Buttons for calculate and reset -->
         <button type="button" onclick="calculateIntensity()" class="calculate-btn">Calculate Intensity</button>
         <button type="button" onclick="resetDailyTotal()" class="reset-btn">Reset Daily Total</button>
     </form>
 
-    <h2 id="result"></h2>
+    <!-- Display daily total outside form -->
     <h3 id="dailyTotal">Daily Caffeine Total: 0 mg</h3>
-    <div id="caffeine-meter">
-        <div id="meter-bar"></div>
+</div>
+
+<!-- Result Overlay -->
+<div class="overlay" id="resultOverlay" style="display: none;">
+    <div id="resultContent">
+        <h2>Caffeine Intensity Results</h2>
+        <div id="result"></div>
+        <button type="button" onclick="goBack()" class="back-btn">Back</button>
     </div>
+</div>
 
-
-    <script src="coffeeFacts.js"></script>
-    <script src="script.js"></script>
+<!-- JavaScript Files -->
+<script src="coffeeFacts.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
