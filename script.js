@@ -13,14 +13,35 @@ function calculateIntensity() {
 
     // Determine warning message based on tolerance and caffeine amount
     let message;
-    if (tolerance === "low" && caffeineAmount > 150) {
-        message = "Proceed with caution! ☠️ This is strong for you.";
-    } else if (tolerance === "moderate" && caffeineAmount > 200) {
-        message = "Maybe stick to one cup 😅";
-    } else if (tolerance === "high" && caffeineAmount > 300) {
-        message = "It's strong, but you can handle it 💪";
-    } else {
-        message = "Safe to drink another cup! ☕";
+
+    if (tolerance === "low") {
+        if (caffeineAmount <= 100) {
+            message = "You're good! Enjoy your coffee ☕";
+        } else if (caffeineAmount <= 150) {
+            message = "This might get you a little jittery, darling 😬";
+        } else {
+            message = "Proceed with caution! ☠️ This is strong for you.";
+        }
+    } else if (tolerance === "moderate") {
+        if (caffeineAmount <= 150) {
+            message = "Nice! You're well within your limit 💁‍♀️";
+        } else if (caffeineAmount <= 200) {
+            message = "Maybe stick to just this cup 😅";
+        } else if (caffeineAmount <= 250) {
+            message = "It's strong, but you can handle it 💪";
+        } else {
+            message = "Whoa there, champ! This might be a bit much 🥴";
+        }
+    } else if (tolerance === "high") {
+        if (caffeineAmount <= 200) {
+            message = "You're chilling. Easy peasy ☕💪";
+        } else if (caffeineAmount <= 300) {
+            message = "You got this, caffeine lover! Go ahead! 😎";
+        } else if (caffeineAmount <= 400) {
+            message = "It's strong, but you're a boss, you got this 🔥";
+        } else {
+            message = "Even for you, this is a big one. Maybe take it easy next cup 😉";
+        }
     }
 
     // Display the result
