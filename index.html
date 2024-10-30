@@ -11,10 +11,11 @@
 <div class="container" id="mainContainer">
     <h1>Coffee Intensity Calculator ☕</h1>
 
-    <!-- Dark Mode Toggle Button -->
+    <!-- Button to toggle between light and dark mode -->
     <button type="button" onclick="toggleDarkMode()" class="dark-mode-btn">Toggle Dark Mode 🌑</button>
 
     <form id="coffeeForm">
+        <!-- Coffee Strength Selection -->
         <div class="form-group">
             <label for="strength">Select Coffee Strength</label>
             <select id="strength" class="input-field">
@@ -24,6 +25,7 @@
             </select>
         </div>
 
+        <!-- Coffee Size Selection -->
         <div class="form-group">
             <label for="size">Select Coffee Size</label>
             <select id="size" class="input-field">
@@ -33,6 +35,7 @@
             </select>
         </div>
 
+        <!-- Caffeine Tolerance Selection -->
         <div class="form-group">
             <label for="tolerance">Your Caffeine Tolerance</label>
             <select id="tolerance" class="input-field">
@@ -42,35 +45,42 @@
             </select>
         </div>
 
+        <!-- User Age Input -->
         <div class="form-group">
             <label for="age">Your Age</label>
             <input type="number" id="age" class="input-field" placeholder="e.g., 25" min="1">
         </div>
 
+        <!-- User Weight Input -->
         <div class="form-group">
             <label for="weight">Your Weight (kg)</label>
             <input type="number" id="weight" class="input-field" placeholder="e.g., 70" min="1">
         </div>
 
+        <!-- Buttons for Calculating Intensity and Resetting Daily Total -->
         <button type="button" onclick="calculateIntensity()" class="calculate-btn">Calculate Intensity</button>
         <button type="button" onclick="resetDailyTotal()" class="reset-btn">Reset Daily Total</button>
     </form>
 
+    <!-- Display for Daily Caffeine Total -->
     <h3 id="dailyTotal">Daily Caffeine Total: 0 mg</h3>
 </div>
 
-<!-- Result Overlay -->
+<!-- Result Overlay Section -->
 <div class="overlay" id="resultOverlay" style="display: none;">
     <div id="resultContent">
         <h2>Caffeine Intensity Results</h2>
         <div id="result"></div>
         <br>
+        
+        <!-- Caffeine Meter with Label -->
         <div id="caffeine-label">
             <p>This Drink's Caffeine Meter:</p>
         </div>
         <div id="caffeine-meter">
             <div id="meter-bar"></div>
         </div>
+        
         <button type="button" onclick="goBack()" class="back-btn">Back</button>
     </div>
 </div>
