@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+/* Light Mode */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f4f8;
@@ -20,7 +21,7 @@ body {
     padding: 30px;
     width: 350px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
@@ -48,16 +49,12 @@ label {
     border: 1px solid #ccd1d9;
     border-radius: 5px;
     font-size: 1em;
-    background-color: #ffffff; /* Set to white for visibility */
-    color: #333; /* Darker font color for contrast */
-    appearance: none; /* Removes default styling in some browsers */
+    background-color: #ffffff;
+    color: #333;
+    appearance: none;
 }
 
-.input-field option {
-    color: #333; /* Ensures option text is dark */
-}
-
-.calculate-btn {
+.calculate-btn, .dark-mode-btn {
     background-color: #6a994e;
     color: #fff;
     border: none;
@@ -71,7 +68,7 @@ label {
     width: 100%;
 }
 
-.calculate-btn:hover {
+.calculate-btn:hover, .dark-mode-btn:hover {
     background-color: #40916c;
 }
 
@@ -81,6 +78,37 @@ label {
     color: #6a994e;
     font-weight: bold;
     line-height: 1.5;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #333;
+    color: #f0f4f8;
+}
+
+body.dark-mode .container {
+    background-color: #4a4e69;
+}
+
+body.dark-mode h1, body.dark-mode label {
+    color: #f0f4f8;
+}
+
+body.dark-mode .input-field {
+    background-color: #333;
+    color: #f0f4f8;
+}
+
+body.dark-mode .calculate-btn, body.dark-mode .dark-mode-btn {
+    background-color: #f4a261;
+}
+
+body.dark-mode .calculate-btn:hover, body.dark-mode .dark-mode-btn:hover {
+    background-color: #e76f51;
+}
+
+body.dark-mode #result {
+    color: #f4a261;
 }
 
 /* Caffeine Meter Styles */
