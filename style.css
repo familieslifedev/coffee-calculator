@@ -82,33 +82,33 @@ label {
 
 /* Dark Mode */
 body.dark-mode {
-    background-color: #333;
-    color: #f0f4f8;
+    background-color: #333 !important;
+    color: #f0f4f8 !important;
 }
 
 body.dark-mode .container {
-    background-color: #4a4e69;
+    background-color: #4a4e69 !important;
 }
 
 body.dark-mode h1, body.dark-mode label {
-    color: #f0f4f8;
+    color: #f0f4f8 !important;
 }
 
 body.dark-mode .input-field {
-    background-color: #333;
-    color: #f0f4f8;
+    background-color: #333 !important;
+    color: #f0f4f8 !important;
 }
 
 body.dark-mode .calculate-btn, body.dark-mode .dark-mode-btn {
-    background-color: #f4a261;
+    background-color: #f4a261 !important;
 }
 
 body.dark-mode .calculate-btn:hover, body.dark-mode .dark-mode-btn:hover {
-    background-color: #e76f51;
+    background-color: #e76f51 !important;
 }
 
 body.dark-mode #result {
-    color: #f4a261;
+    color: #f4a261 !important;
 }
 
 /* Caffeine Meter Styles */
@@ -144,4 +144,26 @@ body.dark-mode #result {
 .coffee-fact {
     color: #4a4e69; /* Coffee brown for random fact */
     margin-top: 15px;
+}
+
+.reset-btn {
+    background-color: #d00000;
+}
+
+.reset-btn:hover {
+    background-color: #9d0208;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #6a994e;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+#dailyTotal {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
 }
