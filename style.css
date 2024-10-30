@@ -22,7 +22,7 @@ body {
     padding: 30px;
     width: 350px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
@@ -99,7 +99,7 @@ body.dark-mode {
 
 body.dark-mode #mainContainer {
     background-color: #4a4e69;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode h1, body.dark-mode label {
@@ -151,6 +151,13 @@ body.dark-mode #result {
     transition: width 0.5s ease, background-color 0.5s ease;
 }
 
+#caffeine-label {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
 /* Overlay Styles */
 .overlay {
     position: fixed;
@@ -193,16 +200,24 @@ body.dark-mode #resultContent {
     color: #0077b6; /* Calming blue for wait time */
 }
 
+body.dark-mode .wait-time {
+    color: #48cae4; /* Make wait time visible in dark mode */
+}
+
 .drink-suggestion {
     color: #6a994e; /* Green for drink suggestion */
 }
 
+body.dark-mode .drink-suggestion {
+    color: #a7c957; /* Make drink suggestion visible in dark mode */
+}
+
 .coffee-fact {
-    color: #4a4e69; /* Coffee brown for random fact */
+    color: #b5651d; /* Coffee brown for random fact */
 }
 
 body.dark-mode .coffee-fact {
-    color: #f0f4f8; /* Make coffee facts visible in dark mode */
+    color: #d4a373; /* Make coffee facts visible in dark mode */
 }
 
 /* Daily Total Styling */
