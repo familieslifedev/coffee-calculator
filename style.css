@@ -200,3 +200,18 @@ body.dark-mode #resultContent {
 .coffee-fact {
     color: #4a4e69; /* Coffee brown for random fact */
 }
+
+body.dark-mode .coffee-fact {
+    color: #f0f4f8; /* Make coffee facts visible in dark mode */
+}
+
+/* Daily Total Styling */
+#dailyTotal {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333; /* Default color for light mode */
+}
+
+body.dark-mode #dailyTotal {
+    color: #f4a261; /* Change to a visible color in dark mode */
+}
