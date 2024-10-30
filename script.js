@@ -3,84 +3,67 @@ let dailyCaffeineTotal = 0;
 
 // Dark mode toggle function
 function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
+    const isDarkMode = document.body.classList.toggle("dark-mode");
+    localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
 }
 
-// Main function to calculate caffeine intensity
+// Apply dark mode if previously enabled
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+}
+
+// Function to calculate caffeine intensity and save results
 function calculateIntensity() {
-    // Clear previous result content
-    const resultElement = document.getElementById("result");
-    resultElement.innerHTML = ""; // Clear previous content in the result overlay
-
-    console.log("Calculating caffeine intensity...");
-
-    // Get values from the form
+    // Get form values
     const strength = document.getElementById("strength").value;
     const size = document.getElementById("size").value;
     const tolerance = document.getElementById("tolerance").value;
     const age = parseInt(document.getElementById("age").value, 10);
     const weight = parseInt(document.getElementById("weight").value, 10);
 
-    // Set base caffeine values for each strength and size
+    // Base caffeine values
     const strengthLevels = { light: 50, medium: 100, strong: 150 };
     const sizeMultipliers = { small: 1, medium: 1.5, large: 2 };
-
-    // Calculate total caffeine amount
     let caffeineAmount = strengthLevels[strength] * sizeMultipliers[size];
 
     // Adjust intensity based on age and weight
-    if (age < 18) {
-        caffeineAmount *= 1.2; // Younger people may be more sensitive
-    } else if (age > 50) {
-        caffeineAmount *= 0.9; // Older people may need slightly less
-    }
+    if (age < 18) caffeineAmount *= 1.2;
+    if (age > 50) caffeineAmount *= 0.9;
+    if (weight < 60) caffeineAmount *= 1.1;
+    if (weight > 90) caffeineAmount *= 0.8;
 
-    if (weight < 60) {
-        caffeineAmount *= 1.1; // Lower weight = higher sensitivity
-    } else if (weight > 90) {
-        caffeineAmount *= 0.8; // Higher weight = lower sensitivity
-    }
-
-    // Determine main intensity message based on tolerance and caffeine amount
+    // Determine main intensity message
     let intensityMessage;
     if (tolerance === "low") {
         intensityMessage = caffeineAmount <= 100 ? "You're good! Enjoy your coffee ☕" :
             caffeineAmount <= 150 ? "This might get you a little jittery, darling 😬" : "Proceed with caution! ☠️";
     } else if (tolerance === "moderate") {
-        intensityMessage = caffeineAmount <= 150 ? "Nice! You're well within your limit 💁‍♀️" :
-            caffeineAmount <= 200 ? "Maybe stick to just this cup 😅" : 
-            caffeineAmount <= 250 ? "It's strong, but you can handle it 💪" : "Whoa there, champ! This might be a bit much 🥴";
+        intensityMessage = caffeineAmount <= 150 ? "Nice! You're within your limit 💁‍♀️" :
+            caffeineAmount <= 200 ? "Maybe stick to just this cup 😅" :
+            caffeineAmount <= 250 ? "It's strong, but you can handle it 💪" : "Whoa there, champ! 🥴";
     } else {
         intensityMessage = caffeineAmount <= 200 ? "You're chilling. Easy peasy ☕💪" :
-            caffeineAmount <= 300 ? "You got this, caffeine lover! 😎" : 
-            caffeineAmount <= 400 ? "It's strong, but you're a boss, you got this 🔥" : "Even for you, this is a big one. Maybe take it easy next cup 😉";
+            caffeineAmount <= 300 ? "You got this, caffeine lover! 😎" :
+            caffeineAmount <= 400 ? "You're a boss, you got this 🔥" : "Maybe take it easy next cup 😉";
     }
 
-    // Determine personality based on choices
     const personality = (strength === "strong" && tolerance === "high") ? "Energizer Bunny 🐰" :
                         (strength === "light" && tolerance === "low") ? "Smooth Sipper 🌊" :
                         (size === "large" && tolerance === "moderate") ? "Adventurous Aficionado ☕" : "Classic Coffee Lover ☕";
 
-    // Display main result message with personality and caffeine amount
-    const mainMessageElement = document.createElement("p");
-    mainMessageElement.innerHTML = `<strong>${personality}</strong> - Caffeine Amount for this cup: ${Math.round(caffeineAmount)} mg<br>${intensityMessage}`;
-    mainMessageElement.classList.add("main-message");
-    resultElement.appendChild(mainMessageElement);
-    console.log("Main message added.");
+    // Full result message
+    const resultMessage = `<strong>${personality}</strong> - Caffeine Amount for this cup: ${Math.round(caffeineAmount)} mg<br>${intensityMessage}`;
 
-    // Update the daily caffeine total
+    // Update daily caffeine total
     dailyCaffeineTotal += caffeineAmount;
-    document.getElementById("dailyTotal").innerText = `Daily Caffeine Total: ${Math.round(dailyCaffeineTotal)} mg`;
+    const dailyTotalMessage = `Daily Caffeine Total: ${Math.round(dailyCaffeineTotal)} mg`;
 
-    // Update the caffeine meter bar
-    const meterBar = document.getElementById("meter-bar");
+    // Caffeine meter settings
     const caffeinePercentage = Math.min((caffeineAmount / 400) * 100, 100);
-    meterBar.style.width = caffeinePercentage + "%";
-    meterBar.style.backgroundColor = caffeinePercentage <= 50 ? "#6a994e" : 
-                                     caffeinePercentage <= 80 ? "#f4a261" : "#e63946";
-    console.log("Caffeine meter updated.");
+    const meterColor = caffeinePercentage <= 50 ? "#6a994e" :
+                      caffeinePercentage <= 80 ? "#f4a261" : "#e63946";
 
-    // Display suggested wait time based on caffeine amount and tolerance
+    // Suggested wait time
     let waitTimeMessage;
     if (tolerance === "low") {
         waitTimeMessage = caffeineAmount > 150 ? "Suggested wait time before next coffee: 4-6 hours" : "Suggested wait time before next coffee: 2-3 hours";
@@ -90,52 +73,37 @@ function calculateIntensity() {
         waitTimeMessage = caffeineAmount > 300 ? "Suggested wait time before next coffee: 1-2 hours" : "Suggested wait time before next coffee: 30 mins - 1 hour";
     }
 
-    const waitTimeElement = document.createElement("p");
-    waitTimeElement.innerText = waitTimeMessage;
-    waitTimeElement.classList.add("wait-time");
-    resultElement.appendChild(waitTimeElement);
-    console.log("Wait time message added.");
-
-    // Suggest an alternative drink if caffeine is too high
-    let alternativeDrink;
+    // Alternative drink suggestion
+    let drinkSuggestionMessage;
     if (tolerance === "low" && caffeineAmount > 100) {
-        alternativeDrink = "How about a relaxing herbal tea or hot chocolate instead? 🍵";
+        drinkSuggestionMessage = "How about a relaxing herbal tea or hot chocolate instead? 🍵";
     } else if (tolerance === "moderate" && caffeineAmount > 200) {
-        alternativeDrink = "Try a green tea or matcha latte for a lighter boost. 🍵";
+        drinkSuggestionMessage = "Try a green tea or matcha latte for a lighter boost. 🍵";
     } else if (tolerance === "high" && caffeineAmount > 300) {
-        alternativeDrink = "If you're really craving it, maybe try an espresso shot or black coffee for a quicker hit. ☕";
+        drinkSuggestionMessage = "Maybe try an espresso shot or black coffee for a quicker hit. ☕";
     } else {
-        alternativeDrink = "You're good with this coffee, but feel free to mix it up with a decaf next time!";
+        drinkSuggestionMessage = "You're good with this coffee, but feel free to mix it up with a decaf next time!";
     }
 
-    const drinkSuggestionElement = document.createElement("p");
-    drinkSuggestionElement.innerText = alternativeDrink;
-    drinkSuggestionElement.classList.add("drink-suggestion");
-    resultElement.appendChild(drinkSuggestionElement);
-    console.log("Drink suggestion added.");
-
-    // Display a random coffee fact
+    // Random coffee fact (ensure coffeeFacts array exists in coffeeFacts.js)
     const randomFact = coffeeFacts[Math.floor(Math.random() * coffeeFacts.length)];
-    const factElement = document.createElement("p");
-    factElement.innerText = randomFact;
-    factElement.classList.add("coffee-fact");
-    resultElement.appendChild(factElement);
-    console.log("Random coffee fact added.");
+    const coffeeFactMessage = randomFact;
 
-    // Show overlay and hide main container
-    document.getElementById("mainContainer").style.display = "none";
-    document.getElementById("resultOverlay").style.display = "flex";
-    console.log("Result overlay displayed.");
+    // Store all data in localStorage for retrieval in results.html
+    localStorage.setItem("resultMessage", resultMessage);
+    localStorage.setItem("dailyTotalMessage", dailyTotalMessage);
+    localStorage.setItem("meterWidth", caffeinePercentage);
+    localStorage.setItem("meterColor", meterColor);
+    localStorage.setItem("waitTimeMessage", waitTimeMessage);
+    localStorage.setItem("drinkSuggestionMessage", drinkSuggestionMessage);
+    localStorage.setItem("coffeeFactMessage", coffeeFactMessage);
+
+    // Redirect to results page
+    window.location.href = "results.html";
 }
 
 // Reset daily caffeine total function
 function resetDailyTotal() {
     dailyCaffeineTotal = 0;
     document.getElementById("dailyTotal").innerText = `Daily Caffeine Total: ${dailyCaffeineTotal} mg`;
-}
-
-// Go back to the main form
-function goBack() {
-    document.getElementById("mainContainer").style.display = "block";
-    document.getElementById("resultOverlay").style.display = "none";
 }
