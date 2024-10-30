@@ -77,8 +77,7 @@ function calculateIntensity() {
     // Display the wait time message
     const waitTimeElement = document.createElement("p");
     waitTimeElement.innerText = waitTimeMessage;
-    waitTimeElement.style.marginTop = "10px";
-    waitTimeElement.style.color = "#4a4e69";
+    waitTimeElement.classList.add("wait-time");
     resultElement.appendChild(waitTimeElement);
 
     // Suggest an alternative drink if caffeine is too high
@@ -96,15 +95,13 @@ function calculateIntensity() {
     // Display the alternative drink suggestion
     const drinkSuggestionElement = document.createElement("p");
     drinkSuggestionElement.innerText = alternativeDrink;
-    drinkSuggestionElement.style.marginTop = "10px";
-    drinkSuggestionElement.style.color = "#6a994e";
+    drinkSuggestionElement.classList.add("drink-suggestion");
     resultElement.appendChild(drinkSuggestionElement);
 
     // Display a random coffee fact
     const randomFact = coffeeFacts[Math.floor(Math.random() * coffeeFacts.length)];
     const factElement = document.createElement("p");
     factElement.innerText = randomFact;
-    factElement.style.marginTop = "15px";
-    factElement.style.color = "#4a4e69";
+    factElement.classList.add("coffee-fact");
     resultElement.appendChild(factElement);
 }
