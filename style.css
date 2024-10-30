@@ -147,12 +147,17 @@ body.dark-mode #result {
 }
 
 .reset-btn {
-    background-color: #d00000;
-}
-
-.reset-btn:hover {
-    background-color: #9d0208;
-}
+    background-color: #6a994e;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    width: 100%;
 
 #result {
     margin-top: 20px;
