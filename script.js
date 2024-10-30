@@ -10,7 +10,7 @@ function toggleDarkMode() {
 function calculateIntensity() {
     // Clear previous result content
     const resultElement = document.getElementById("result");
-    resultElement.innerHTML = "";
+    resultElement.innerHTML = ""; // Clear all previous content in the result overlay
 
     // Get values from the form
     const strength = document.getElementById("strength").value;
@@ -60,11 +60,14 @@ function calculateIntensity() {
                         (size === "large" && tolerance === "moderate") ? "Adventurous Aficionado ☕" : "Classic Coffee Lover ☕";
 
     // Display main result message with personality and caffeine amount
-    resultElement.innerHTML = `${personality} - Caffeine Amount for this cup: ${caffeineAmount} mg<br>${intensityMessage}`;
+    const mainMessageElement = document.createElement("p");
+    mainMessageElement.innerHTML = `<strong>${personality}</strong> - Caffeine Amount for this cup: ${Math.round(caffeineAmount)} mg<br>${intensityMessage}`;
+    mainMessageElement.classList.add("main-message");
+    resultElement.appendChild(mainMessageElement);
 
     // Update the daily caffeine total
     dailyCaffeineTotal += caffeineAmount;
-    document.getElementById("dailyTotal").innerText = `Daily Caffeine Total: ${dailyCaffeineTotal} mg`;
+    document.getElementById("dailyTotal").innerText = `Daily Caffeine Total: ${Math.round(dailyCaffeineTotal)} mg`;
 
     // Update the caffeine meter bar
     const meterBar = document.getElementById("meter-bar");
