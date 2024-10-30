@@ -4,6 +4,7 @@ let dailyCaffeineTotal = 0;
 // Toggle dark mode
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
+    document.getElementById("resultOverlay").classList.toggle("dark-mode-overlay");
 }
 
 // Calculate caffeine intensity
