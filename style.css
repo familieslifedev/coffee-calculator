@@ -1,11 +1,11 @@
-/* Reset */
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Light Mode */
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f4f8;
@@ -51,10 +51,9 @@ label {
     font-size: 1em;
     background-color: #ffffff;
     color: #333;
-    appearance: none;
 }
 
-.calculate-btn, .dark-mode-btn {
+.calculate-btn, .reset-btn, .dark-mode-btn, .back-btn {
     background-color: #6a994e;
     color: #fff;
     border: none;
@@ -68,109 +67,8 @@ label {
     width: 100%;
 }
 
-.calculate-btn:hover, .dark-mode-btn:hover {
+.calculate-btn:hover, .reset-btn:hover, .dark-mode-btn:hover, .back-btn:hover {
     background-color: #40916c;
-}
-
-#result {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #6a994e;
-    font-weight: bold;
-    line-height: 1.5;
-}
-
-/* Dark Mode */
-body.dark-mode {
-    background-color: #333 !important;
-    color: #f0f4f8 !important;
-}
-
-body.dark-mode .container {
-    background-color: #4a4e69 !important;
-}
-
-body.dark-mode h1, body.dark-mode label {
-    color: #f0f4f8 !important;
-}
-
-body.dark-mode .input-field {
-    background-color: #333 !important;
-    color: #f0f4f8 !important;
-}
-
-body.dark-mode .calculate-btn, body.dark-mode .dark-mode-btn {
-    background-color: #f4a261 !important;
-}
-
-body.dark-mode .calculate-btn:hover, body.dark-mode .dark-mode-btn:hover {
-    background-color: #e76f51 !important;
-}
-
-body.dark-mode #result {
-    color: #f4a261 !important;
-}
-
-/* Caffeine Meter Container */
-#caffeine-meter {
-    margin: 15px auto;            /* Center within the overlay */
-    width: 80%;                   /* Shrink to a manageable width */
-    max-width: 300px;             /* Limit its max width */
-    height: 15px;                 /* Adjust the height */
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Meter Bar */
-#meter-bar {
-    height: 100%;
-    width: 0;                     /* Start with no fill */
-    background-color: #6a994e;    /* Green for low caffeine */
-    border-radius: 10px;
-    transition: width 0.5s ease, background-color 0.5s ease;
-}
-
-/* Message Colors */
-.wait-time {
-    color: #0077b6; /* Calming blue for wait time */
-    margin-top: 10px;
-}
-
-.drink-suggestion {
-    color: #6a994e; /* Green for drink suggestion */
-    margin-top: 10px;
-}
-
-.coffee-fact {
-    color: #4a4e69; /* Coffee brown for random fact */
-    margin-top: 15px;
-}
-
-.reset-btn {
-    background-color: #6a994e;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 15px;
-    width: 100%;
-
-    .reset-btn:hover, .dark-mode-btn:hover {
-    background-color: #40916c;
-}
-
-#result {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #6a994e;
-    font-weight: bold;
-    line-height: 1.5;
 }
 
 #dailyTotal {
@@ -179,7 +77,62 @@ body.dark-mode #result {
     color: #333;
 }
 
-/* Overlay */
+/* Result Styles */
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #6a994e;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #333;
+    color: #f0f4f8;
+}
+
+body.dark-mode .container {
+    background-color: #4a4e69;
+}
+
+body.dark-mode h1, body.dark-mode label {
+    color: #f0f4f8;
+}
+
+body.dark-mode .input-field {
+    background-color: #333;
+    color: #f0f4f8;
+}
+
+body.dark-mode .calculate-btn, body.dark-mode .reset-btn, body.dark-mode .dark-mode-btn, body.dark-mode .back-btn {
+    background-color: #f4a261;
+}
+
+body.dark-mode .calculate-btn:hover, body.dark-mode .reset-btn:hover, body.dark-mode .dark-mode-btn:hover, body.dark-mode .back-btn:hover {
+    background-color: #e76f51;
+}
+
+/* Caffeine Meter */
+#caffeine-meter {
+    margin: 15px auto;
+    width: 80%;
+    max-width: 300px;
+    height: 15px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#meter-bar {
+    height: 100%;
+    width: 0;
+    background-color: #6a994e;
+    border-radius: 10px;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+/* Overlay Styles */
 .overlay {
     position: fixed;
     top: 0;
@@ -202,19 +155,19 @@ body.dark-mode #result {
     text-align: center;
 }
 
-.back-btn {
-    background-color: #6a994e;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 15px;
-    width: 100%;
+/* Message Colors */
+.wait-time, .drink-suggestion, .coffee-fact {
+    margin-top: 10px;
+}
 
-    .back-btn:hover, .dark-mode-btn:hover {
-    background-color: #40916c;
+.wait-time {
+    color: #0077b6;
+}
+
+.drink-suggestion {
+    color: #6a994e;
+}
+
+.coffee-fact {
+    color: #4a4e69;
 }
