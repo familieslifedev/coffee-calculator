@@ -48,7 +48,13 @@ label {
     border: 1px solid #ccd1d9;
     border-radius: 5px;
     font-size: 1em;
-    background-color: #f7f9fc;
+    background-color: #ffffff; /* Set to white for visibility */
+    color: #333; /* Darker font color for contrast */
+    appearance: none; /* Removes default styling in some browsers */
+}
+
+.input-field option {
+    color: #333; /* Ensures option text is dark */
 }
 
 .calculate-btn {
