@@ -67,11 +67,11 @@ function calculateIntensity() {
     // Calculate and display suggested wait time based on tolerance and caffeine amount
     let waitTimeMessage;
     if (tolerance === "low") {
-        waitTimeMessage = caffeineAmount > 150 ? "Suggested wait time: 4-6 hours" : "Suggested wait time: 2-3 hours";
+        waitTimeMessage = caffeineAmount > 150 ? "Suggested wait time before next coffee: 4-6 hours" : "Suggested wait time before next coffee: 2-3 hours";
     } else if (tolerance === "moderate") {
-        waitTimeMessage = caffeineAmount > 200 ? "Suggested wait time: 3-4 hours" : "Suggested wait time: 1-2 hours";
+        waitTimeMessage = caffeineAmount > 200 ? "Suggested wait time before next coffee: 3-4 hours" : "Suggested wait time before next coffee: 1-2 hours";
     } else if (tolerance === "high") {
-        waitTimeMessage = caffeineAmount > 300 ? "Suggested wait time: 1-2 hours" : "Suggested wait time: 30 mins - 1 hour";
+        waitTimeMessage = caffeineAmount > 300 ? "Suggested wait time before next coffee: 1-2 hours" : "Suggested wait time before next coffee: 30 mins - 1 hour";
     }
 
     // Display the wait time message
