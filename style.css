@@ -132,7 +132,6 @@ body.dark-mode #result {
     transition: width 0.5s ease, background-color 0.5s ease;
 }
 
-
 /* Message Colors */
 .wait-time {
     color: #0077b6; /* Calming blue for wait time */
@@ -161,6 +160,10 @@ body.dark-mode #result {
     transition: background-color 0.3s;
     margin-top: 15px;
     width: 100%;
+
+    .reset-btn:hover, .dark-mode-btn:hover {
+    background-color: #40916c;
+}
 
 #result {
     margin-top: 20px;
@@ -203,17 +206,15 @@ body.dark-mode #result {
     background-color: #6a994e;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 5px;
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s;
     margin-top: 15px;
     width: 100%;
-    transition: background-color 0.3s;
-}
 
-.back-btn:hover {
+    .back-btn:hover, .dark-mode-btn:hover {
     background-color: #40916c;
 }
-
