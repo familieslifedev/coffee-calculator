@@ -113,10 +113,20 @@ function calculateIntensity() {
     factElement.innerText = randomFact;
     factElement.classList.add("coffee-fact");
     resultElement.appendChild(factElement);
+
+    // Show overlay and hide main container
+    document.getElementById("mainContainer").style.display = "none";
+    document.getElementById("resultOverlay").style.display = "flex";
 }
 
 // Reset daily caffeine total function
 function resetDailyTotal() {
     dailyCaffeineTotal = 0;
     document.getElementById("dailyTotal").innerText = `Daily Caffeine Total: ${dailyCaffeineTotal} mg`;
+}
+
+// Go back to the main form
+function goBack() {
+    document.getElementById("mainContainer").style.display = "block";
+    document.getElementById("resultOverlay").style.display = "none";
 }
