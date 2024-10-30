@@ -1,3 +1,7 @@
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
+
 function calculateIntensity() {
     // Clear previous result content
     document.getElementById("result").innerHTML = "";
@@ -6,13 +10,31 @@ function calculateIntensity() {
     const strength = document.getElementById("strength").value;
     const size = document.getElementById("size").value;
     const tolerance = document.getElementById("tolerance").value;
+    const age = parseInt(document.getElementById("age").value, 10);
+    const weight = parseInt(document.getElementById("weight").value, 10);
 
     // Set base caffeine values for each strength and size
     const strengthLevels = { light: 50, medium: 100, strong: 150 };
     const sizeMultipliers = { small: 1, medium: 1.5, large: 2 };
 
+    let dailyCaffeineTotal = 0;  // Initialize a global variable to track daily intake
+
     // Calculate total caffeine amount
     const caffeineAmount = strengthLevels[strength] * sizeMultipliers[size];
+
+    // Adjust intensity based on age and weight
+    let adjustedCaffeine = caffeineAmount;
+    if (age < 18) {
+        adjustedCaffeine *= 1.2; // Younger people may be more sensitive
+    } else if (age > 50) {
+        adjustedCaffeine *= 0.9; // Older people may need slightly less
+    }
+
+    if (weight < 60) {
+        adjustedCaffeine *= 1.1; // Lower weight = higher sensitivity
+    } else if (weight > 90) {
+        adjustedCaffeine *= 0.8; // Higher weight = lower sensitivity
+    }
 
     // Determine warning message based on tolerance and caffeine amount
     let message;
@@ -45,6 +67,35 @@ function calculateIntensity() {
             message = "Even for you, this is a big one. Maybe take it easy next cup 😉";
         }
     }
+
+    // Determine personality based on choices
+    let personality;
+    if (strength === "strong" && tolerance === "high") {
+        personality = "Energizer Bunny 🐰";
+    } else if (strength === "light" && tolerance === "low") {
+        personality = "Smooth Sipper 🌊";
+    } else if (size === "large" && tolerance === "moderate") {
+        personality = "Adventurous Aficionado ☕";
+    } else {
+        personality = "Classic Coffee Lover ☕";
+    }
+
+    // Message about current cup
+    const message = `${personality} - Caffeine Amount for this cup: ${caffeineAmount} mg`;
+
+    // Display the result for current cup
+    document.getElementById("result").innerText = message;
+    
+    // Update the total caffeine intake for the day
+    dailyCaffeineTotal += caffeineAmount;
+    document.getElementById("dailyTotal").innerText = `Daily Caffeine Total: ${dailyCaffeineTotal} mg`;
+}
+
+// Reset daily caffeine total for a fresh start each day
+function resetDailyTotal() {
+    dailyCaffeineTotal = 0;
+    document.getElementById("dailyTotal").innerText = `Daily Caffeine Total: ${dailyCaffeineTotal} mg`;
+}
 
     // Display the main intensity message
     const resultElement = document.getElementById("result");
